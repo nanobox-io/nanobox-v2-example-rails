@@ -6,12 +6,6 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# add a special :assets groups that is only required when not in production
-# or when the PRECOMPILE env is set
-if !Rails.env.production? || ENV["PRECOMPILE"]
-  Bundler.require(:assets)
-end
-
 module DemoBlog
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

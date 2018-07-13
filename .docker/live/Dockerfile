@@ -56,7 +56,11 @@ RUN apk add --no-cache \
       # postgres dev headers for client
       postgresql-dev \
       # timezone files
-      tzdata
+      tzdata \
+      # nodejs
+      nodejs \
+      # yarn
+      yarn
       
       
 # ██████╗ ██╗   ██╗███╗   ██╗██████╗ ██╗     ███████╗██████╗ 
@@ -112,20 +116,7 @@ COPY ${LIVE_PATH}/config ./config/
 # ██║  ██║███████║███████║███████╗   ██║   ███████║
 # ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝   ╚══════╝
 
-# Same as above, the asset compilation needs some things that won't be
-# needed after the compilation, so we run all of the commands in a single RUN.
-RUN \
-    # install compile dependencies
-    apk add --no-cache --virtual .compile-deps \
-      # nodejs for asset compilation
-      nodejs && \
-    # install yarn
-    npm install -g yarn && \
-    # precompile assets
-    rails assets:precompile PRECOMPILE=true && \
-    # remove compile packages
-    apk del .compile-deps
-
+RUN rails assets:precompile
 
 # ██████╗ ██╗   ██╗███╗   ██╗
 # ██╔══██╗██║   ██║████╗  ██║

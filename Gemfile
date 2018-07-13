@@ -31,15 +31,13 @@ gem 'bulma-rails', '~> 0.6.1'
 # Simple forms
 gem 'simple_form', '~> 3.5'
 
-group :assets do
-  # Use SCSS for stylesheets
-  gem 'sass-rails', '~> 5.0'
-  # Use CoffeeScript for .coffee assets and views
-  gem 'coffee-rails', '~> 4.2'
-  # Only add uglifier when compiling assets
-  # Use Uglifier as compressor for JavaScript assets
-  gem 'uglifier', '>= 1.3.0'
-end
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
+# Use CoffeeScript for .coffee assets and views
+gem 'coffee-rails', '~> 4.2'
+# Only add uglifier when compiling assets
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
