@@ -1,0 +1,45 @@
+
+# ██████╗ ███████╗███████╗ ██████╗ ██╗   ██╗██████╗  ██████╗███████╗███████╗
+# ██╔══██╗██╔════╝██╔════╝██╔═══██╗██║   ██║██╔══██╗██╔════╝██╔════╝██╔════╝
+# ██████╔╝█████╗  ███████╗██║   ██║██║   ██║██████╔╝██║     █████╗  ███████╗
+# ██╔══██╗██╔══╝  ╚════██║██║   ██║██║   ██║██╔══██╗██║     ██╔══╝  ╚════██║
+# ██║  ██║███████╗███████║╚██████╔╝╚██████╔╝██║  ██║╚██████╗███████╗███████║
+# ╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚══════╝╚══════╝
+# 
+# A resource is a database or external service that the app relies on. Resources
+# are internal to the application, and are not accessible to the public.
+# 
+# Access to resources is accomplished via `nbx console` or `nbx tunnel`
+# 
+# A resource is declared as follows:
+#   <NAME>: <docker image>
+# 
+# Examples:
+#   mysql: nanobox/mysql
+#   redis: nanobox/redis
+#   bob: custom/image
+resources:
+  # A postgres database
+  postgres: nanobox/postgresql
+  
+# ███████╗███████╗██████╗ ██╗   ██╗██╗ ██████╗███████╗███████╗
+# ██╔════╝██╔════╝██╔══██╗██║   ██║██║██╔════╝██╔════╝██╔════╝
+# ███████╗█████╗  ██████╔╝██║   ██║██║██║     █████╗  ███████╗
+# ╚════██║██╔══╝  ██╔══██╗╚██╗ ██╔╝██║██║     ██╔══╝  ╚════██║
+# ███████║███████╗██║  ██║ ╚████╔╝ ██║╚██████╗███████╗███████║
+# ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝ ╚═════╝╚══════╝╚══════╝
+# 
+# A service is a publicly accessible service, usually the application itself.
+# 
+services:
+  # The rails application
+  web:
+    # build configuration
+    build:
+      context: ${APP_DIR}
+      dockerfile: ${LIVE_PATH}/Dockerfile
+      args:
+        LIVE_PATH: ${LIVE_PATH}
+    
+    # routing configuration
+    http_port: 3000
