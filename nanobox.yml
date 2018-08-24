@@ -36,10 +36,7 @@ services:
   web:
     # build configuration
     build:
-      context: ${APP_DIR}
-      dockerfile: ${LIVE_PATH}/Dockerfile
-      args:
-        LIVE_PATH: ${LIVE_PATH}
+      dockerfile: .docker/live/Dockerfile
     
     # routing configuration
     http_port: 3000

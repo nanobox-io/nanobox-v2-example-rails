@@ -28,9 +28,6 @@ FROM ruby:2.3-alpine
 # Tell nanobox to route to port 3000
 LABEL io.nanobox.http_port="3000"
 
-# convenience ARGs from nbx
-ARG LIVE_PATH
-
 # set the rails environment to production
 ENV RAILS_ENV=production
 # log rails to stdout
@@ -106,7 +103,7 @@ RUN \
 COPY . /app
 
 # copy the live config files on top of the app config
-COPY ${LIVE_PATH}/config ./config/
+COPY .docker/live/config ./config/
 
 
 #  █████╗ ███████╗███████╗███████╗████████╗███████╗
