@@ -72,7 +72,7 @@ RUN \
 COPY . /app
 
 # copy the live config files on top of the app config
-COPY .docker/config ./config/
+COPY .docker/prod/web/config ./config/
 
 # 5 - Assets
 
